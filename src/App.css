@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+}
+
+.score-container {
+    margin: 15px;
+    padding: 10px;
+}
+
+.board-container {
+    justify-content: space-between;
+    align-content: center;
+    margin: 20px;
+    padding: 10px;
+}
+
+.scoreboard {
+    justify-content: space-around;
+    align-content: space-between;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 25px;
+    padding: 15px;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+tr, td {
+    border: 2px solid black;
+    padding: 30px;
+}
+
+img {
+    padding: 25px;
+}
