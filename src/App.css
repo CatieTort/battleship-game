@@ -9,11 +9,13 @@
     justify-content: center;
     text-align: center;
     margin: 10px;
+	padding: 50px;
 }
 
 .score-container {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
     margin: 15px;
     padding: 10px;
 }
@@ -27,7 +29,7 @@
 
 .scoreboard {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
     justify-content: center;
 	width: 100%;
 }
@@ -68,7 +70,7 @@ img {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	width: 25%;
+	width: 50%;
 }
 
 .ship-container{
