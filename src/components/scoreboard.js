@@ -6,8 +6,8 @@ class Scoreboard extends Component {
 
         return(
             <div className="scoreboard">
-                    <div id="torpedo"><h2>Torpedoes: </h2></div>
-					<div id="ship"><h2>Ships: </h2></div>
+                    <div id="torpedo"><h2>Torpedoes: {this.props.shotsRemaining} / 50</h2></div>
+					<div id="ship"><h2>Ships: {this.props.ships} / 5</h2></div>
             </div>
         )
     }
