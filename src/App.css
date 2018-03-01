@@ -12,20 +12,24 @@
 }
 
 .score-container {
+	display: flex;
+	flex-direction: row;
     margin: 15px;
     padding: 10px;
 }
 
 .board-container {
-    justify-content: space-between;
-    align-content: center;
+	display: flex;
+    justify-content: center;
     margin: 20px;
     padding: 10px;
 }
 
 .scoreboard {
-    justify-content: space-around;
-    align-content: space-between;
+	display: flex;
+	flex-direction: row;
+    justify-content: center;
+	width: 100%;
 }
 
 h1 {
@@ -40,6 +44,8 @@ h2 {
 table {
     border: 2px solid black;
     border-collapse: collapse;
+	width: 100%;
+	height: 650px;
 }
 
 tr, td {
@@ -48,5 +54,51 @@ tr, td {
 }
 
 img {
-    padding: 25px;
+    padding: 15px;
+}
+
+#torpedo {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width: 50%;
+}
+
+#ship {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width: 25%;
+}
+
+.ship-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+#Carrier > img {
+	width: 150px;
+	height: 50px;
+}
+
+#Battleship > img {
+	width: 150px;
+	height: 50px;
+}
+
+#Destroyer > img {
+	width: 150px;
+	height: 50px;
+}
+
+#Sub > img {
+	width: 150px;
+	height: 50px;
+}
+
+#Frigate > img {
+	width: 150px;
+	height: 50px;
 }

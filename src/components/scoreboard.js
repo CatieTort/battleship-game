@@ -6,7 +6,8 @@ class Scoreboard extends Component {
 
         return(
             <div className="scoreboard">
-                    <h2>Torpedoes: </h2><h2>Ships: </h2>
+                    <div id="torpedo"><h2>Torpedoes: </h2></div>
+					<div id="ship"><h2>Ships: </h2></div>
             </div>
         )
     }

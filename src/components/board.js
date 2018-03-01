@@ -73,7 +73,7 @@ class Board extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="ship-container">
+                <div>
                     <Ships />
                 </div>
             </div>
