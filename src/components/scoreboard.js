@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Ships from './ships';
+import Ships from './Ships';
 
 class Scoreboard extends Component {
 

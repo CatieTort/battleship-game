@@ -75,6 +75,7 @@ body {
 	font-size: 1.6rem;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .ship-container > span {
@@ -113,4 +114,15 @@ td:hover {
 #ships {
 	font-size: 2.5rem;
 	padding: 1.5rem;
+}
+
+
+#sunk {
+	position:absolute;
+}
+
+.foot {
+	font-size: 1.2rem;
+	text-align: center;
+	color: #f4f2f2;
 }

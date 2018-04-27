@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Scoreboard from './scoreboard';
-import Square from './square';
+import Scoreboard from './Scoreboard';
+import Square from './Square';
 
 const EMPTY = 0;
 const SHIP = 1;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/header';
-import Board from './components/board';
+import Header from './components/Header';
+import Board from './components/Board';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="container">
 	  	<Header/>
         <Board />
+		<Footer/>
       </div>
     );
   }
