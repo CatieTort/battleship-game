@@ -5,7 +5,7 @@ class Header extends Component {
     render (){
 
         return(
-            <div>
+            <div className="game__header">
                 <h1>BattleShip</h1>
             </div>
         )

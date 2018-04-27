@@ -6,21 +6,16 @@ class Ships extends Component {
 
         return(
             <div className="ship-container">
-				<div id="Carrier">
-					<img src={require('../images/carrier.gif')} alt="Carrier"/>
-				</div>
-				<div id="Battleship">
-					<img src={require('../images/battlship.gif')} alt="Battleship"/>
-				</div>
-				<div id="Destroyer">
-					<img src={require('../images/destroyer.jpg')} alt="Destroyer"/>
-				</div>
-				<div id="Sub">
-					<img src={require('../images/sub.png')} alt="Submarine"/>
-				</div>
-				<div id="Frigate">
-					<img src={require('../images/frigate.png')} alt="Frigate"/>
-				</div>
+				<span>Carrier</span>
+				<img src={require('../images/carrier.gif')} alt="Carrier" id="Carrier"/>
+				<span>Battleship</span>
+				<img src={require('../images/battlship.gif')} alt="Battleship" id="Battleship"/>
+				<span>Destroyer</span>
+				<img src={require('../images/destroyer.jpg')} alt="Destroyer" id="Destroyer"/>
+				<span>Submarine</span>
+				<img src={require('../images/sub.png')} alt="Submarine" id="Sub"/>
+				<span>Frigate</span>
+				<img src={require('../images/frigate.png')} alt="Frigate" id="Frigate"/>
             </div>
         )
     }

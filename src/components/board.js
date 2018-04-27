@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Header from './header';
 import Scoreboard from './scoreboard';
-import Ships from './ships';
 import Square from './square';
 
 const EMPTY = 0;
@@ -137,28 +135,22 @@ class Board extends Component {
         return rows
     }
 
-    render (){
+	render (){
 		const { shotsRemaining, ships } = this.state
 
-        return(
-            <div>
-                <Header />
-                <div className="score-container">
-                    <Scoreboard  shotsRemaining={shotsRemaining} ships={ships}/>
-                </div>
-                <div className="board-container">
-                    <table>
-                        <tbody>
-                            {this.renderRows()}
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <Ships />
-                </div>
-            </div>
-        )
-    }
+		return(
+			<div className="game">
+				<Scoreboard  shotsRemaining={shotsRemaining} ships={ships}/>
+				<main className="board">
+					<table>
+						<tbody>
+						{this.renderRows()}
+						</tbody>
+					</table>
+				</main>
+			</div>
+		)
+	}
 }
 
 export default Board;

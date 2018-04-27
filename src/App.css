@@ -1,106 +1,116 @@
+
+:root {
+	--color-primary-dark: #1919A3;
+	--color-primary-light: #84C9FD;
+	--color-hit: #B20000;
+	--color-miss: #F7F7F7;
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
-.game-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin: 10px;
-	padding: 50px;
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
 }
 
-.score-container {
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Coda', cursive;
+	font-weight: 400;
+	background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+}
+
+.container {
+	max-width: 120rem;
+	margin: 4rem auto;
+}
+
+.game {
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
-    margin: 15px;
-    padding: 10px;
 }
 
-.board-container {
-	display: flex;
-    justify-content: center;
-    margin: 20px;
-    padding: 10px;
+.game__header {
+	text-align: center;
+	margin: 2rem;
+	font-weight: 800;
 }
 
-.scoreboard {
+.score {
 	display: flex;
 	flex-direction: column;
-    justify-content: center;
-	width: 100%;
+	justify-content: space-between;
+	margin: 1.5rem;
+	padding: 1rem;
+	border: 2px solid black;
+	border-radius: 3px;
+	width: 25%;
+	background-color: #fff;
+	box-shadow: 0 2rem 6rem rgba(0,0,0, .3);
 }
+
+.board {
+	display: flex;
+	align-items: stretch;
+	margin: 1.5rem;
+	padding: 1rem;
+	width: 80%;
+}
+
+.details {
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.ship-container {
+	font-size: 1.6rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.ship-container > span {
+	padding: 1rem;
+}
+
+.ship-container > img {
+	width: 20rem;
+	height: 7rem;
+	margin: 1rem 1.5rem;
+}
+
 
 h1 {
-    font-size: 40px;
-}
-
-h2 {
-    font-size: 25px;
-    padding: 15px;
+    font-size: 7rem;
 }
 
 table {
-    border: 2px solid black;
+	border-radius: 3px;
     border-collapse: collapse;
-	width: 100%;
-	height: 650px;
+	box-shadow: 0 2rem 6rem rgba(0,0,0, .3);
 }
 
 tr, td {
-    border: 2px solid black;
-    padding: 30px;
+    border: 2px solid #fff;
+    padding: 4rem;
+	background-color: rgba(229,229,229, .2);
 }
 
-img {
-    padding: 15px;
+td:hover {
+	background-color: #6D6D6D;
+	cursor: crosshair;
 }
 
-#torpedo {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	width: 50%;
-}
-
-#ship {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	width: 50%;
-}
-
-.ship-container{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-}
-
-#Carrier > img {
-	width: 150px;
-	height: 50px;
-}
-
-#Battleship > img {
-	width: 150px;
-	height: 50px;
-}
-
-#Destroyer > img {
-	width: 150px;
-	height: 50px;
-}
-
-#Sub > img {
-	width: 150px;
-	height: 50px;
-}
-
-#Frigate > img {
-	width: 150px;
-	height: 50px;
+#torpedos,
+#ships {
+	font-size: 2.5rem;
+	padding: 1.5rem;
 }
