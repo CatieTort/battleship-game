@@ -3,6 +3,7 @@ import '../App.css';
 import Scoreboard from './Scoreboard';
 import Square from './Square';
 
+//4 possible states for each cell: empty, ship, miss, hit assign numbers to each within the grid.
 const EMPTY = 0;
 const SHIP = 1;
 const HIT = 2;
@@ -33,29 +34,26 @@ class Board extends Component {
 	componentWillMount() {
 	   this.placeShips()
    }
-   //4 possible states for each cell: empty, ship, miss, hit assign numbers to each within the grid.
-   // all cells start empty = 0,
-   // after ships are placed ship cells = 1
 
     setUpBoard(){
-        var gameBoard = []
+        var board = []
         for(let row = 0; row < 10; row++){
-            gameBoard.push([])
+            board.push([])
             for(let col = 0; col < 10; col++){
-                gameBoard[row][col] = EMPTY
+                board[row][col] = EMPTY
             }
         }
-        return gameBoard
+        return board
     }
 
 	checkArea(board, row, col, size, orientation){
 		for(let i = 0; i < size; i++){
-		// console.log(board);
+		console.log(board);
 			if (board[row][col] === SHIP){
 				return false
 			} else if (orientation === HORIZONTAL){
 
-				if(row + size >= 10){
+				if(row >= 10){
 					return false
 				} else if (board[row + i][col] === SHIP){
 					return false
@@ -63,7 +61,7 @@ class Board extends Component {
 
 			} else if (orientation === VERTICAL){
 
-				if (col + size >= 10){
+				if (col >= 10){
 					return false
 				} else if (board[row][col + i] === SHIP){
 					return false
@@ -81,10 +79,10 @@ class Board extends Component {
 
            for(let i = 0; i < shipDetails.length; i++){
                size = shipDetails[i].size
-               console.log("size:", size);
+               // console.log("size:", size);
                this.placeShip(size)
            }
-           console.log("board:", board);
+           // console.log("board:", board);
        }
 
 	placeShip(size) {
@@ -94,9 +92,9 @@ class Board extends Component {
 		var row = Math.floor(Math.random()*10)
 		var col = Math.floor(Math.random()*10)
 
-		console.log("orientation:",orientation);
-		console.log("row:",row);
-		console.log("col",col);
+		// console.log("orientation:",orientation);
+		// console.log("row:",row);
+		// console.log("col",col);
 
 		let checkArea = this.checkArea(board, row, col, size, orientation)
 		// pull random coordiates that = the number of cells that is the length of each ship
@@ -108,10 +106,22 @@ class Board extends Component {
 
 				if (orientation === HORIZONTAL){
 					board[row + i][col] = SHIP
+				} else if (orientation === VERTICAL) {
+					board[row][col + i] = SHIP
 				} else {
 					board[row][col + i] = SHIP
 				}
 			}
+		}
+	}
+
+	handleClick (coordiates){
+		if (coordiates === EMPTY){
+			coordiates = MISS
+		} else if (coordiates === SHIP){
+			coordiates = HIT
+		} else {
+			return
 		}
 	}
 
@@ -121,7 +131,15 @@ class Board extends Component {
         var cols = []
 
         for (let col = 0; col < 10; col++){
-            cols.push(<Square id={row, col} key={row, col}/>)
+
+			let coordiates = board[row][col]
+
+            cols.push(
+				<Square id={row, col}
+					key={row, col}
+					value={coordiates}
+					onClick={this.handleClick.bind(this, coordiates)}
+				/>)
         }
         return cols
     }

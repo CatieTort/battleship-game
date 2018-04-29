@@ -31,6 +31,9 @@ body {
 .container {
 	max-width: 120rem;
 	margin: 4rem auto;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
 .game {
@@ -47,9 +50,10 @@ body {
 .score {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	margin: 1.5rem;
+	justify-content: space-around;
+	max-height: 87rem;
 	padding: 1rem;
+	margin-top: 2.5rem;
 	border: 2px solid black;
 	border-radius: 3px;
 	width: 25%;
@@ -112,17 +116,70 @@ td:hover {
 
 #torpedos,
 #ships {
+	flex: 0 0 auto;
 	font-size: 2.5rem;
-	padding: 1.5rem;
+	padding: 1rem;
+	margin-right: -1rem;
+	z-index: 1;
 }
 
 
 #sunk {
-	position:absolute;
+	z-index: 0;
+}
+
+.re-start {
+	height: 70%;
+	width: 60%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0,0,0, .7);
+	background-size: cover;
+	text-align: center;
+	border-radius: 3px;
+	z-index: 10;
+}
+
+.start-box > p {
+	font-size: 7rem;
+	font-weight: 800;
+	color: #eee;
+	padding-bottom: 5rem;
+	margin: 7.5rem;
+}
+
+.start-box {
+	padding: 2.5rem;
+}
+
+.btn {
+	font-weight: bold;
+	color: #eee;
+	text-shadow: 1px 2px rgba(0,0,0);
+	padding: 2rem 6rem;
+	font-size: 3rem;
+	margin: 0 4rem;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 2rem 6rem rgba(0,0,0, .8);
+}
+
+#y {
+	background-color: #66CD00;
+}
+
+#n {
+	background-color: #EE0000;
 }
 
 .foot {
 	font-size: 1.2rem;
 	text-align: center;
+	margin-bottom: 5rem;
 	color: #f4f2f2;
+	flex: 0 0 auto;
 }
+
+/* Add module for win and lose with button to play again? */
