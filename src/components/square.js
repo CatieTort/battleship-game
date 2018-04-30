@@ -4,8 +4,8 @@ class Square extends Component {
 
     render (){
         return(
-			<td className={this.props.status}
-            id={this.props.id} onClick={this.props.onClick}>{this.props.value}</td>
+			<td className={this.props.classes}
+            id={this.props.id} coordiates={this.props.key} value={this.props.value} onClick={this.props.onClick}></td>
 
         )
     }

@@ -123,6 +123,13 @@ td:hover {
 	z-index: 1;
 }
 
+.hit {
+	background-color: #EE0000;
+}
+
+.miss {
+	background-color: #fff;
+}
 
 #sunk {
 	z-index: 0;

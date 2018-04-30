@@ -5,7 +5,7 @@ class Start extends Component {
 
 	render (){
 		return (
-			<Board shipCount={5} maxShots={50}/>
+			<Board />
 		)
 	}
 }
