@@ -64,7 +64,7 @@ class Board extends Component {
 
 	checkArea(board, row, col, size, orientation){
 		for(let i = 0; i < size; i++){
-		console.log(board);
+		// console.log(board);
 			if (board[row][col] > EMPTY){
 				return false
 			} else if (orientation === HORIZONTAL){
@@ -90,7 +90,6 @@ class Board extends Component {
 	}
 
 	placeShips() {
-           const { board } = this.state
 		   let size
 
            for(let i = 0; i < shipDetails.length; i++){
@@ -98,7 +97,6 @@ class Board extends Component {
 
                this.placeShip(size)
            }
-           // console.log("board:", board);
        }
 
 	placeShip(size) {
@@ -129,13 +127,15 @@ class Board extends Component {
 				}
 			}
 		}
+		console.log(board)
 	}
 
 	handleClick (val){
-		const {shotsRemaining, ships} = this.state
+		const {shotsRemaining} = this.state
 
 		if (val === EMPTY){
 			val = MISS
+			this.setState({shotsRemaining: shotsRemaining - 1})
 			// console.log("Miss:", val)
 		} else if (val > EMPTY && val <= 5){
 			this.whichShip(val)
@@ -195,13 +195,14 @@ class Board extends Component {
         const { board } = this.state
 
         var cols = []
+		let bgColor = " "
 
         for (let col = 0; col < 10; col++){
 
 			let val = board[row][col]
 
             cols.push(
-				<Square id={row, col}
+				<Square classes={bgColor} id={row, col}
 					key={row, col}
 					value={val}
 					onClick={this.handleClick.bind(this, val)}

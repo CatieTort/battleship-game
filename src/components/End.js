@@ -6,6 +6,8 @@ class End extends Component {
 		return (
 			<div className="re-start">
 				<div className="start-box">
+				<p>You Win!</p>
+				<p>You Lose!</p>
 				<p>Play Again?</p>
 					<button className="btn" id="y">Yes</button>
 					<button className="btn" id="n">No</button>

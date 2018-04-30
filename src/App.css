@@ -51,12 +51,12 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	max-height: 87rem;
+	max-height: 93rem;
 	padding: 1rem;
 	margin-top: 2.5rem;
 	border: 2px solid black;
 	border-radius: 3px;
-	width: 25%;
+	width: 26%;
 	background-color: #fff;
 	box-shadow: 0 2rem 6rem rgba(0,0,0, .3);
 }
@@ -79,17 +79,19 @@ body {
 	font-size: 1.6rem;
 	display: flex;
 	flex-direction: column;
-	position: relative;
+	flex: 1;
 }
 
 .ship-container > span {
+	margin-top: 2rem;
 	padding: 1rem;
+	padding-bottom: 0;
 }
 
 .ship-container > img {
-	width: 20rem;
+	width: 80%;
 	height: 7rem;
-	margin: 1rem 1.5rem;
+	margin: 0 1.5rem;
 }
 
 
@@ -114,9 +116,19 @@ td:hover {
 	cursor: crosshair;
 }
 
+.ship-hits {
+	display: flex;
+	color: #EE0000;
+	margin-bottom: 1rem;
+}
+
+.ship-hits > p {
+	margin: 1rem 1.5rem;
+}
+
 #torpedos,
 #ships {
-	flex: 0 0 auto;
+	flex: 0 0 none;
 	font-size: 2.5rem;
 	padding: 1rem;
 	margin-right: -1rem;
