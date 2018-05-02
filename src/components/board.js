@@ -134,9 +134,9 @@ class Board extends Component {
 		const {shotsRemaining} = this.state
 		let ID = document.getElementById(`${row}`+'_'+`${col}`)
 
-		console.log(ID.id)
-
-		if (val === EMPTY){
+		if (ID.className === 'hit' || ID.className === 'miss') {
+			console.log("already clicked")
+		}else if (val === EMPTY){
 			val = MISS
 			this.setState({shotsRemaining: shotsRemaining - 1})
 			ID.classList.add('miss')
@@ -147,9 +147,6 @@ class Board extends Component {
 			ID.classList.add('hit')
 			// console.log("Hit:", val)
 			this.setState({shotsRemaining: shotsRemaining - 1})
-
-		} else if (val >= 9) {
-			return
 		}
 		this.checkForWinner()
 	}
