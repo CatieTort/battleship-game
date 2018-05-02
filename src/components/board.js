@@ -130,18 +130,24 @@ class Board extends Component {
 		console.log(board)
 	}
 
-	handleClick (val){
+	handleClick (val, row, col){
 		const {shotsRemaining} = this.state
+		let ID = document.getElementById(`${row}`+'_'+`${col}`)
+
+		console.log(ID.id)
 
 		if (val === EMPTY){
 			val = MISS
 			this.setState({shotsRemaining: shotsRemaining - 1})
+			ID.classList.add('miss')
 			// console.log("Miss:", val)
 		} else if (val > EMPTY && val <= 5){
 			this.whichShip(val)
 			val = HIT
+			ID.classList.add('hit')
 			// console.log("Hit:", val)
 			this.setState({shotsRemaining: shotsRemaining - 1})
+
 		} else if (val >= 9) {
 			return
 		}
@@ -202,10 +208,10 @@ class Board extends Component {
 			let val = board[row][col]
 
             cols.push(
-				<Square classes={bgColor} id={row, col}
+				<Square classes={bgColor} id={row +'_'+col}
 					key={row, col}
 					value={val}
-					onClick={this.handleClick.bind(this, val)}
+					onClick={this.handleClick.bind(this, val, row, col)}
 				/>)
         }
         return cols
