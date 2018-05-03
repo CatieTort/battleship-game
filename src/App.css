@@ -2,8 +2,8 @@
 :root {
 	--color-primary-dark: #1919A3;
 	--color-primary-light: #84C9FD;
-	--color-hit: #B20000;
-	--color-miss: #F7F7F7;
+	--color-hit: #EE0000;
+	--color-miss: #E5E5E5;
 }
 
 * {
@@ -118,7 +118,7 @@ td:hover {
 
 .ship-hits {
 	display: flex;
-	color: #EE0000;
+	color: var(--color-hit);
 	margin-bottom: 1rem;
 }
 
@@ -136,41 +136,103 @@ td:hover {
 }
 
 .hit {
-	background-color: #EE0000;
+	background-color: var(--color-hit);
 }
 
 .miss {
+	background-color: var(--color-miss);
+}
+
+/* Popup Styling - Gameover & Sunk */
+
+/* display set to flex to show popup */
+/* https://medium.com/@pppped/build-a-simple-modal-window-with-react-and-jss-f05041d899cc */
+
+.popup_container {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(0,0,0,.7);
+	background-size: cover;
+	position: fixed;
+	top:0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	animation: show .5s ease,
+}
+
+/* Fade-in open animation */
+  @keyframes show: {
+    0% {
+      display: none;
+      opacity: 0;
+    },
+    1% {
+      display: flex;
+      opacity: 0;
+    },
+    100%: {
+      opacity: 1;
+    }
+  }
+
+.popup {
+	margin: 5rem;
 	background-color: #fff;
-}
-
-#sunk {
-	z-index: 0;
-}
-
-.re-start {
-	height: 70%;
+	border-radius: 3px;
 	width: 60%;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: rgba(0,0,0, .7);
-	background-size: cover;
-	text-align: center;
-	border-radius: 3px;
-	z-index: 10;
 }
 
-.start-box > p {
-	font-size: 7rem;
+#close {
+	position: absolute;
+	top: 0;
+	left: 70rem;
+	font-size: 2.5rem;
+	border: none;
+	padding: 2rem;
+}
+
+.gameover {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 5rem;
+}
+
+.gameover__msg {
 	font-weight: 800;
-	color: #eee;
-	padding-bottom: 5rem;
-	margin: 7.5rem;
+	font-size: 12rem;
 }
 
-.start-box {
-	padding: 2.5rem;
+.gameover__restart {
+	font-size: 5rem;
+	text-align: center;
+
+}
+
+.gameover__restart > p {
+	padding: 3rem;
+}
+
+.sunk {
+	font-size: 5rem;
+	text-align: center;
+	margin: 6rem;
+}
+
+#sunk__msg {
+	margin: 3rem;
+}
+
+#sunk__msg > p {
+	padding-bottom: 5.5rem;
 }
 
 .btn {
@@ -182,15 +244,39 @@ td:hover {
 	margin: 0 4rem;
 	border: none;
 	border-radius: 3px;
-	box-shadow: 0 2rem 6rem rgba(0,0,0, .8);
+	box-shadow: 0 1rem 3rem rgba(0,0,0, .6);
+	transition: all .2s;
+}
+
+.btn:hover {
+	transform: translateY(-.3rem);
+		box-shadow: 0 1rem 2rem rgba(0,0,0, .2);
+}
+
+.btn:active,
+.btn:focus,
+.btn:visited {
+	outline: none;
+}
+
+.btn:active {
+	transform: translateY(-.1rem);
 }
 
 #y {
 	background-color: #66CD00;
 }
 
+#y:hover {
+	background-color: #5bb800;
+}
+
 #n {
 	background-color: #EE0000;
+}
+
+#n:hover {
+	background-color: #be0000;
 }
 
 .foot {

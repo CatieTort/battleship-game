@@ -3,8 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Start from "./components/Start"
-import End from "./components/End"
+import Start from "./components/Start";
 
 
 class App extends Component {
@@ -16,7 +15,6 @@ class App extends Component {
 					<Router>
 						<Switch>
 							<Route exact path='/' component={Start}/>
-							<Redirect to='/game-over' component={End}/>
 						</Switch>
 					</Router>
 				</div>

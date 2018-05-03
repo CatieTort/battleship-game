@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import Scoreboard from './Scoreboard';
 import Square from './Square';
+// import ModalLauncher from "./ModalLauncher";
 
 //4 possible states for each cell: empty, ship, miss, hit assign numbers to each within the grid.
 //ship's value is = to the size
@@ -28,8 +29,7 @@ class Board extends Component {
             board: this.setUpBoard(),
 			shotsRemaining: 50,
             ships: 5,
-			win: false,
-			lose: false
+			end: 0,
         }
     }
 
@@ -49,16 +49,16 @@ class Board extends Component {
     }
 
 	checkForWinner(){
-		const { shotsRemaining, ships, win, lose } = this.state
+		const { shotsRemaining, ships } = this.state
 
-		if (shotsRemaining === 0 && ships === 0){
-			this.setState({win: true})
-		} else if (shotsRemaining > 0 && ships === 0){
-			this.setState({win: true})
+		if (ships === 0){
+			this.setState({end: 1})
+		} else if (shotsRemaining === 0 && ships === 0){
+			this.setState({end: 1})
 		} else if (shotsRemaining === 0 && ships > 0){
-			this.setState({lose: true})
+			this.setState({end: 2})
 		} else {
-			this.setState({lose: true})
+			return
 		}
 	}
 
@@ -152,8 +152,10 @@ class Board extends Component {
 	}
 
 	whichShip(val){
-		//checks which ship was hit and when the ship is hit the max amount it is removed from the ship count in state
+		//checks which ship was hit and when the ship is hit = ship size it is removed from the ship count in state
 		const {ships} = this.state
+		let hitCount = document.getElementById(`${val}`)
+		let ship;
 
 		if (val === 5){
 			//add hit to carrier
@@ -161,6 +163,7 @@ class Board extends Component {
 
 			if (shipDetails[0].hits === 5){
 				this.setState({ships: ships - 1})
+				ship = 5
 			}
 		} else if (val === 4){
 			//add hit to Battleship
@@ -168,6 +171,7 @@ class Board extends Component {
 
 			if (shipDetails[1].hits === 4){
 				this.setState({ships: ships - 1})
+				ship = 4
 			}
 		} else if (val === 3){
 			//add hit to Destroyer
@@ -175,6 +179,7 @@ class Board extends Component {
 
 			if (shipDetails[2].hits === 3){
 				this.setState({ships: ships - 1})
+				ship = 3
 			}
 		} else if (val === 2){
 			//add hit to Submarine
@@ -182,6 +187,7 @@ class Board extends Component {
 
 			if (shipDetails[3].hits === 2){
 				this.setState({ships: ships - 1})
+				ship = 2
 			}
 		} else if (val === 1) {
 			//sink Frigate and - ship
@@ -189,9 +195,12 @@ class Board extends Component {
 
 			if (shipDetails[4].hits === 1){
 				this.setState({ships: ships - 1})
+				ship = 1
 			}
 		}
+		hitCount.innerHTML += "<p>X</p>"
 		this.checkForWinner()
+		return ship
 	}
 
     renderCols(row){
@@ -224,18 +233,21 @@ class Board extends Component {
     }
 
 	render (){
-		const { shotsRemaining, ships } = this.state
+		const { shotsRemaining, ships, showModal, end } = this.state
 
+		// <ModalLauncher gameStatus={end} ship={ship}/>
 		return(
-			<div className="game">
-				<Scoreboard  shotsRemaining={shotsRemaining} ships={ships}/>
-				<main className="board">
-					<table>
-						<tbody>
-						{this.renderRows()}
-						</tbody>
-					</table>
-				</main>
+			<div>
+				<div className="game">
+					<Scoreboard  shotsRemaining={shotsRemaining} ships={ships}/>
+					<main className="board">
+						<table>
+							<tbody>
+							{this.renderRows()}
+							</tbody>
+						</table>
+					</main>
+				</div>
 			</div>
 		)
 	}
