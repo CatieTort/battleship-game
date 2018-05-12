@@ -11,7 +11,7 @@ class Gameover extends Component {
 
 				<div className="gameover__restart">
 					<p>Play Again?</p>
-						<button type="button" onClick={this.props.newGame()} className="btn" id="y">Yes</button>
+						<button type="button" onClick={this.props.newGame} className="btn" id="y">Yes</button>
 						<button type="button" onClick={this.props.OnClick} className="btn" id="n">No</button>
 				</div>
 			</div>

@@ -145,11 +145,8 @@ td:hover {
 
 /* Popup Styling - Gameover & Sunk */
 
-/* display set to flex to show popup */
-/* https://medium.com/@pppped/build-a-simple-modal-window-with-react-and-jss-f05041d899cc */
-
 .popup_container {
-	display: none;
+	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
