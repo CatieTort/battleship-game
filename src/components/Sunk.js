@@ -6,7 +6,7 @@ class Sunk extends Component {
 		super(props)
 
 		this.state = {
-			ship: this.props.shipSunk,
+			ship: this.props.ship,
 			shipName: [
 				"Ghost",
 				"Frigate",

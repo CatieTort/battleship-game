@@ -11,7 +11,7 @@ class Gameover extends Component {
 	}
 
 	displayMsg(){
-		if (this.state.winner == true){
+		if (this.state.winner === true){
 			gameMsg.innerHTML = "You Won!"
 		} else {
 			gameMsg.innerHTML = "You Lose!"
