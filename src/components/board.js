@@ -3,6 +3,8 @@ import '../App.css';
 import Modal from './Modal';
 import Scoreboard from './Scoreboard';
 import Square from './Square';
+import Sunk from "./Sunk";
+import Gameover from "./Gameover";
 
 
 //4 possible states for each cell: empty, ship, miss, hit assign numbers to each within the grid.
@@ -30,8 +32,8 @@ class Board extends Component {
             board: this.setUpBoard(),
 			shotsRemaining: 50,
             ships: 5,
-			ship: 0,
 			showModal: false,
+			modalMsg: " ",
         }
 
 		this.handleShow = this.handleShow.bind(this);
@@ -150,6 +152,8 @@ class Board extends Component {
 			ID.classList.add('hit')
 			// console.log("Hit:", val)
 			this.setState({shotsRemaining: shotsRemaining - 1})
+		} else if (shotsRemaining === 0){
+			return
 		}
 	}
 
@@ -165,7 +169,7 @@ class Board extends Component {
 
 			if (shipDetails[0].hits === 5){
 				this.setState({ships: ships - 1})
-				sunkShip = 5
+				sunkShip = 0
 			}
 		} else if (val === 4){
 			//add hit to Battleship
@@ -173,7 +177,7 @@ class Board extends Component {
 
 			if (shipDetails[1].hits === 4){
 				this.setState({ships: ships - 1})
-				sunkShip = 4
+				sunkShip = 1
 			}
 		} else if (val === 3){
 			//add hit to Destroyer
@@ -181,7 +185,7 @@ class Board extends Component {
 
 			if (shipDetails[2].hits === 3){
 				this.setState({ships: ships - 1})
-				sunkShip = 3
+				sunkShip = 2
 			}
 		} else if (val === 2){
 			//add hit to Submarine
@@ -189,7 +193,7 @@ class Board extends Component {
 
 			if (shipDetails[3].hits === 2){
 				this.setState({ships: ships - 1})
-				sunkShip = 2
+				sunkShip = 3
 			}
 		} else if (val === 1) {
 			//sink Frigate and - ship
@@ -197,12 +201,33 @@ class Board extends Component {
 
 			if (shipDetails[4].hits === 1){
 				this.setState({ships: ships - 1})
-				sunkShip = 1
+				sunkShip = 4
 			}
 		}
 		hitCount.innerHTML += "<p>X</p>"
-		this.setState({ship: sunkShip})
+
+		if(sunkShip !== undefined){
+			this.modalMsg(sunkShip)
+		}
+
+	}
+
+	modalMsg(sunkShip){
+		const {ships, shotsRemaining} = this.state
+
+		var popup;
+		var sunk = shipDetails[sunkShip].name
+
+		if (ships > 0){
+			popup =	<Sunk onClick={this.handleHide} ship={sunk}/>
+		} else if ((ships === 0 && shotsRemaining === 0) || (ships === 0 && shotsRemaining > 0)){
+			popup =	<Gameover winner={true} onClick={this.handleHide} newGame={this.newGame} />
+		} else {
+			popup =	<Gameover winner={false} onClick={this.handleHide} newGame={this.newGame} />
+		}
+		this.setState({modalMsg: popup})
 		this.handleShow()
+
 	}
 
     renderCols(row){
@@ -234,15 +259,15 @@ class Board extends Component {
     }
 
 	render (){
-		const { shotsRemaining, ships, ship, showModal } = this.state
+		const { shotsRemaining, ships, ship, sunkShip, showModal, modalMsg } = this.state
 
 			const modal = showModal ? (
-				<Modal
-					ship={ship}
-					shots={shotsRemaining}
-					ships={ships}
-					hide={this.handleHide}
-					game={this.newGame}>
+				<Modal>
+					<div className="popup_container" onClick={this.handleHide}>
+						<div id="modal" className="popup">
+							{modalMsg}
+						</div>
+					</div>
 				</Modal>
 		) : null;
 		return(

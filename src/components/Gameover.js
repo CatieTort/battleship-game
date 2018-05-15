@@ -2,16 +2,12 @@ import React, {Component} from 'react';
 
 const gameMsg = document.getElementById('gameMsg')
 
-
 class Gameover extends Component {
-	constructor(props){
-		super(props)
-
-		this.state = {winner: this.props.winner}
-	}
 
 	displayMsg(){
-		if (this.state.winner === true){
+		let winner = this.props.winner;
+		
+		if (winner === true){
 			gameMsg.innerHTML = "You Won!"
 		} else {
 			gameMsg.innerHTML = "You Lose!"
